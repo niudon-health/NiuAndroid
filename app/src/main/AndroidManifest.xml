@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="edu.stanford.cardinalkit">
+    package="com.niudon.swasth">
 
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.SEND_SMS"/>
@@ -12,7 +12,7 @@
     <uses-permission android:name="android.permission.health.READ_WEIGHT"/>
 
     <application
-        android:name=".CardinalKitApp"
+        android:name="com.niudon.swasth.SwasthApp"
         android:label="CardinalKit"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -23,7 +23,7 @@
         android:theme="@style/Theme.CardinalKit.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.MainActivity"
+            android:name="com.niudon.swasth.presentation.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.CardinalKit.NoActionBar">
@@ -39,7 +39,7 @@
         </activity>
 
         <activity
-            android:name=".presentation.surveys.SurveyActivity"
+            android:name="com.niudon.swasth.presentation.surveys.SurveyActivity"
             android:theme="@style/Theme.CardinalKit"
             android:label="Survey">
         </activity>
