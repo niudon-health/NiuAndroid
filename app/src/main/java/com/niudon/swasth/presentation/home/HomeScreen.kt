@@ -82,6 +82,26 @@ fun HomeScreen(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
+                    Column() {
+                        LearnMoreCard()
+                        Spacer(modifier = Modifier.height(20.dp))
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                        ) {
+                            StepsCard()
+                            Spacer(Modifier.width(5.dp))
+                            WeightCard()
+                        }
+                        Spacer(modifier = Modifier.height(70.dp))
+                    }
+                }
+                /*
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     Text(
                         text = stringResource(R.string.task_summary),
                         fontWeight = FontWeight.SemiBold,
@@ -118,7 +138,7 @@ fun HomeScreen(
                         WeightCard()
                     }
                     Spacer(modifier = Modifier.height(70.dp))
-                }
+                }*/
             }
         }
     )

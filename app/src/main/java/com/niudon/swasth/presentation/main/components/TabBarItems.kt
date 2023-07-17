@@ -14,7 +14,7 @@ object TabBarItems {
             image = Icons.Filled.Home,
             route = Screens.HomeScreen.route
         ),
-        TabBarItem(
+        /*TabBarItem(
             title = "Tasks",
             image = Icons.Filled.CheckBox,
             route = Screens.TasksScreen.route
@@ -24,7 +24,7 @@ object TabBarItems {
             image = Icons.Filled.Contacts,
             route = Screens.ContactsScreen.route
 
-        ),
+        ),*/
         TabBarItem(
             title = "Profile",
             image = Icons.Filled.Person,
