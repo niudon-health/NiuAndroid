@@ -25,11 +25,13 @@ import com.niudon.swasth.data.repositories.ContactsRepositoryImpl
 import com.niudon.swasth.data.repositories.SurveyRepositoryImpl
 import com.niudon.swasth.data.repositories.TaskLogRepositoryImpl
 import com.niudon.swasth.data.repositories.TasksRepositoryImpl
+import com.niudon.swasth.data.repositories.WeightLogRepositoryImpl
 import com.niudon.swasth.domain.repositories.AuthRepository
 import com.niudon.swasth.domain.repositories.ContactsRepository
 import com.niudon.swasth.domain.repositories.SurveyRepository
 import com.niudon.swasth.domain.repositories.TaskLogRepository
 import com.niudon.swasth.domain.repositories.TasksRepository
+import com.niudon.swasth.domain.repositories.WeightLogRepository
 import com.niudon.swasth.domain.usecases.auth.AuthUseCases
 import com.niudon.swasth.domain.usecases.auth.GetAuthStatus
 import com.niudon.swasth.domain.usecases.auth.OneTapSignIn
@@ -49,6 +51,9 @@ import com.niudon.swasth.domain.usecases.tasklogs.TaskLogUseCases
 import com.niudon.swasth.domain.usecases.tasklogs.UploadTaskLog
 import com.niudon.swasth.domain.usecases.tasks.GetTasks
 import com.niudon.swasth.domain.usecases.tasks.TasksUseCases
+import com.niudon.swasth.domain.usecases.weightlogs.GetWeightLogs
+import com.niudon.swasth.domain.usecases.weightlogs.UploadWeightLog
+import com.niudon.swasth.domain.usecases.weightlogs.WeightLogUseCases
 import com.niudon.swasth.services.HealthConnectManager
 import javax.inject.Named
 
@@ -93,6 +98,20 @@ class AppModule {
         user?.let {
             return db.collection(
                 "${Constants.FIRESTORE_BASE_DOCUMENT}/${Constants.FIRESTORE_USERS_COLLECTION}/${user.uid}/${Constants.FIRESTORE_TASKLOG_COLLECTION}"
+            )
+        }
+        return null
+    }
+
+    @Provides
+    @Named(Constants.WEIGHTLOG_REF)
+    fun provideWeightLogRef(
+        db: FirebaseFirestore
+    ): CollectionReference? {
+        val user = Firebase.auth.currentUser
+        user?.let {
+            return db.collection(
+                "${Constants.FIRESTORE_BASE_DOCUMENT}/${Constants.FIRESTORE_USERS_COLLECTION}/${user.uid}/${Constants.FIRESTORE_WEIGHTLOG_COLLECTION}"
             )
         }
         return null
@@ -207,6 +226,12 @@ class AppModule {
     ): TasksRepository = TasksRepositoryImpl(tasksRef, context)
 
     @Provides
+    @Named(Constants.WEIGHTLOG_REPOSITORY)
+    fun provideWeightLogRepository(
+        @Named(Constants.WEIGHTLOG_REF) weightLogRef: CollectionReference?
+    ): WeightLogRepository = WeightLogRepositoryImpl(weightLogRef)
+
+    @Provides
     @Named(Constants.TASKLOG_REPOSITORY)
     fun provideTaskLogRepository(
         @Named(Constants.TASKLOG_REF)
@@ -257,6 +282,16 @@ class AppModule {
     ) = TaskLogUseCases(
         uploadTaskLog = UploadTaskLog(repository),
         getTaskLogs = GetTaskLogs(repository)
+    )
+
+    @Provides
+    @Named(Constants.WEIGHTLOG_USE_CASES)
+    fun provideWeightLogUseCases(
+        @Named(Constants.WEIGHTLOG_REPOSITORY)
+        repository: WeightLogRepository
+    ) = WeightLogUseCases(
+        uploadWeightLog = UploadWeightLog(repository),
+        getWeightLogs = GetWeightLogs(repository)
     )
 
     @Provides

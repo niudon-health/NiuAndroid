@@ -13,6 +13,7 @@ object Constants {
     const val FIRESTORE_TASKS_COLLECTION = "tasks"
     const val FIRESTORE_TASKLOG_COLLECTION = "tasklogs"
     const val FIRESTORE_CONTACTS_COLLECTION = "contacts"
+    const val FIRESTORE_WEIGHTLOG_COLLECTION = "weightlogs"
 
     // Screens
     const val MAIN_SCREEN = "Main"
@@ -38,6 +39,7 @@ object Constants {
     const val TASKS_REF = "tasksRef"
     const val TASKLOG_REF = "taskLogRef"
     const val CONTACTS_REF = "contactsRef"
+    const val WEIGHTLOG_REF = "weightLogRef"
 
     const val SIGN_IN_REQUEST = "signInRequest"
     const val SIGN_UP_REQUEST = "signUpRequest"
@@ -51,6 +53,9 @@ object Constants {
     const val TASKLOG_REPOSITORY = "taskLogRepository"
     const val TASKLOG_USE_CASES = "taskLogUseCases"
 
+    const val WEIGHTLOG_REPOSITORY = "weightLogRepository"
+    const val WEIGHTLOG_USE_CASES = "weightLogUseCases"
+
     const val CONTACTS_REPOSITORY = "contactsRepository"
     const val CONTACTS_USE_CASES = "contactsUseCases"
 
@@ -58,6 +63,6 @@ object Constants {
     const val AUTH_USE_CASES = "authUseCases"
 
     // Intents
-    const val SURVEY_NAME = "com.niudon.cardinalkit.SURVEY_NAME"
-    const val TASK_ID = "com.niudon.cardinalkit.TASK_ID"
+    const val SURVEY_NAME = "com.niudon.swasth.SURVEY_NAME"
+    const val TASK_ID = "com.niudon.swasth.TASK_ID"
 }

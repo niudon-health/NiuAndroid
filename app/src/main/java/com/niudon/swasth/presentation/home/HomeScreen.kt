@@ -96,7 +96,7 @@ fun HomeScreen(
                         Spacer(modifier = Modifier.height(70.dp))
                     }
                 }
-                /*
+
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -138,7 +138,7 @@ fun HomeScreen(
                         WeightCard()
                     }
                     Spacer(modifier = Modifier.height(70.dp))
-                }*/
+                }
             }
         }
     )
